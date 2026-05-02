@@ -14,7 +14,7 @@ export function Navbar() {
         />
         <span className="text-xl font-bold tracking-tight text-black">SunoAI</span>
       </div>
-      <nav className="hidden md:flex items-center gap-8 font-medium text-black">
+      <nav className="hidden md:flex items-center gap-4 lg:gap-8 text-sm lg:text-base font-medium text-black">
         <Link href="#" className="hover:opacity-70 transition-opacity">Products</Link>
         <Link href="#" className="hover:opacity-70 transition-opacity">Customer</Link>
         <Link href="#" className="hover:opacity-70 transition-opacity">Solution</Link>

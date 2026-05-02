@@ -131,3 +131,29 @@
     @apply font-sans;
   }
 }
+
+@keyframes waveform-loop {
+  0%, 100% {
+    transform: scaleY(0.48);
+    opacity: 0.46;
+  }
+  38% {
+    transform: scaleY(1.14);
+    opacity: 0.9;
+  }
+  62% {
+    transform: scaleY(0.68);
+    opacity: 0.56;
+  }
+}
+
+.waveform-bar {
+  animation: waveform-loop var(--waveform-duration, 1.8s) ease-in-out infinite;
+  animation-delay: var(--waveform-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waveform-bar {
+    animation: none;
+  }
+}

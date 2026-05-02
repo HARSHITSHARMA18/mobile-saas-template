@@ -33,7 +33,7 @@ export function Hero() {
       </div>
 
       {/* Dashed Div Divider */}
-      <div className="w-full h-10 border-y border-white dark:border-white opacity-30 bg-[repeating-linear-gradient(315deg,currentColor_0,currentColor_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] my-10 text-white"></div>
+      <div className="w-full h-10 border-y border-white dark:border-white opacity-30 bg-[repeating-linear-gradient(315deg,currentColor_0,currentColor_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] my-5 text-white"></div>
 
       {/* Triple Phones */}
       <div className="w-full flex justify-center -mt-4 relative z-10 -mb-4">
