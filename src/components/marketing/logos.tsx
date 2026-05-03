@@ -1,5 +1,6 @@
 "use client"
 import React from "react";
+import { motion, type Variants } from "motion/react";
 
 const Billboard = () => {
   return (
@@ -70,61 +71,98 @@ const WIRED = () => {
   )
 }
 
+const logoItems = [Billboard, Complex, Forbes, RollingStone, VARIETY, WIRED];
+
+const sectionVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const fadeUpVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    filter: "blur(10px)",
+    y: 14,
+  },
+  visible: {
+    opacity: 1,
+    filter: "blur(0px)",
+    y: 0,
+    transition: {
+      type: "spring",
+      bounce: 0.22,
+      duration: 1.1,
+    },
+  },
+};
+
+const dividerVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    scaleX: 0.96,
+  },
+  visible: {
+    opacity: 1,
+    scaleX: 1,
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 export function Logos() {
   return (
-    <section className="w-full bg-transparent flex flex-col items-center pt-24 pb-16 z-20 relative">
-      <h2 className="text-center text-sm md:text-base font-medium text-black/50 mb-10">
+    <motion.section
+      className="w-full bg-transparent flex flex-col items-center pt-24 pb-16 z-20 relative"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.35 }}
+    >
+      <motion.h2
+        className="text-center text-sm md:text-base font-medium text-black/50 mb-10"
+        variants={fadeUpVariants}
+      >
         Trusted By The World&apos;s Best Companies
-      </h2>
+      </motion.h2>
 
       <div className="w-full flex flex-col">
         {/* Top Dashed Div */}
-        <div className="w-full h-8 border-t border-black/10 relative overflow-hidden">
+        <motion.div
+          className="w-full h-8 border-t border-black/10 relative overflow-hidden origin-center"
+          variants={dividerVariants}
+        >
           <div className="absolute inset-0 opacity-10 bg-[repeating-linear-gradient(315deg,currentColor_0,currentColor_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] text-black"></div>
-        </div>
+        </motion.div>
 
         {/* Logos Container */}
         <div className="w-full border-y border-black/10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-x divide-y lg:divide-y-0 divide-black/20 bg-white/50 backdrop-blur-sm">
-
-          {/* Billboard */}
-          <div className="flex h-24 items-center justify-center p-4 grayscale opacity-60 hover:opacity-100 transition-opacity">
-            <Billboard />
-          </div>
-
-          {/* COMPLEX */}
-          <div className="flex h-24 items-center justify-center p-4 grayscale opacity-60 hover:opacity-100 transition-opacity">
-            <Complex />
-          </div>
-
-          {/* Forbes */}
-          <div className="flex h-24 items-center justify-center p-4 grayscale opacity-60 hover:opacity-100 transition-opacity">
-            <Forbes />
-          </div>
-
-          {/* RollingStone */}
-          <div className="flex h-24 items-center justify-center p-4 grayscale opacity-60 hover:opacity-100 transition-opacity">
-            <RollingStone />
-          </div>
-
-          {/* VARIETY */}
-          <div className="flex h-24 items-center justify-center p-4 grayscale opacity-60 hover:opacity-100 transition-opacity">
-            <VARIETY />
-          </div>
-
-          {/* WIRED */}
-          <div className="flex h-24 items-center justify-center p-4 grayscale opacity-60 hover:opacity-100 transition-opacity">
-            <WIRED />
-          </div>
-
+          {logoItems.map((Logo, index) => (
+            <motion.div
+              key={index}
+              className="flex h-24 items-center justify-center p-4 grayscale opacity-60 transition-opacity hover:opacity-100"
+              variants={fadeUpVariants}
+            >
+              <Logo />
+            </motion.div>
+          ))}
         </div>
 
         {/* Bottom Dashed Div */}
-        <div className="w-full h-8 border-b border-black/10 relative overflow-hidden">
+        <motion.div
+          className="w-full h-8 border-b border-black/10 relative overflow-hidden origin-center"
+          variants={dividerVariants}
+        >
           <div className="absolute inset-0 opacity-10 bg-[repeating-linear-gradient(315deg,currentColor_0,currentColor_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] text-black"></div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
-
 

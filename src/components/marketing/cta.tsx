@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion, type Variants } from "motion/react";
 
 // Placeholder components - you can replace these with your actual SVG components
 export const DownloadGoogleDark = () => {
@@ -142,6 +143,54 @@ export const DownloadAppleLight = () => {
   )
 }
 
+const ctaContainerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.14,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const ctaItemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    filter: "blur(12px)",
+    y: 18,
+  },
+  visible: {
+    opacity: 1,
+    filter: "blur(0px)",
+    y: 0,
+    transition: {
+      type: "spring",
+      bounce: 0.24,
+      duration: 1.25,
+    },
+  },
+};
+
+const storeButtonVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    filter: "blur(8px)",
+    scale: 0.94,
+    y: 10,
+  },
+  visible: {
+    opacity: 1,
+    filter: "blur(0px)",
+    scale: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      bounce: 0.28,
+      duration: 1,
+    },
+  },
+};
+
 export function CTA() {
   return (
     <section className="relative w-full flex flex-col items-center justify-center py-40 overflow-hidden">
@@ -153,16 +202,29 @@ export function CTA() {
         }}
       />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-4 md:px-8 z-10">
-        <h2 className="text-center text-4xl font-bold tracking-tight text-white drop-shadow-sm md:text-6xl lg:text-[4.5rem] mb-10">
+      <motion.div
+        className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-4 md:px-8 z-10"
+        variants={ctaContainerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.45 }}
+      >
+        <motion.h2
+          className="text-center text-4xl font-bold tracking-tight text-white drop-shadow-sm md:text-6xl lg:text-[4.5rem] mb-10"
+          variants={ctaItemVariants}
+        >
           The #1 AI Music App
-        </h2>
+        </motion.h2>
 
         <div className="flex flex-row items-center justify-center gap-4">
-          <DownloadAppleLight />
-          <DownloadGoogleLight />
+          <motion.div variants={storeButtonVariants} whileHover={{ y: -3 }}>
+            <DownloadAppleLight />
+          </motion.div>
+          <motion.div variants={storeButtonVariants} whileHover={{ y: -3 }}>
+            <DownloadGoogleLight />
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

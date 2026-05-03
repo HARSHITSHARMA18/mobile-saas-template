@@ -72,7 +72,7 @@ export function Footer() {
                 </Link>
               ))}
             </div>
-            <p className="mt-4 text-xl font-normal tracking-[-0.03em] text-black/40">
+            <p className="mt-4 text-lg font-normal tracking-[-0.03em] text-black/40">
               © 2026 Suno AI, All rights reserved
             </p>
           </div>
