@@ -2,6 +2,9 @@ import { Navbar } from "@/components/marketing/navbar";
 import { Hero } from "@/components/marketing/hero";
 import { Logos } from "@/components/marketing/logos";
 import { Features } from "@/components/marketing/features";
+import { Pricing } from "@/components/marketing/pricing";
+import { CTA } from "@/components/marketing/cta";
+import { Footer } from "@/components/marketing/footer";
 
 export default function Home() {
   return (
@@ -34,6 +37,12 @@ export default function Home() {
         </div>
 
         <Features />
+
+        <Pricing />
+
+        <CTA />
+
+        <Footer />
 
       </main>
     </div>
