@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mobile SaaS Marketing Template
+
+A sharp, conversion-focused marketing page template for mobile SaaS products, built for the Solace UI marketing library. It includes a full landing page structure with hero, press logos, feature cards, pricing, CTA, and footer sections.
+
+The visual language is intentionally crisp: no rounded design system, strong borders, high-contrast type, orange brand energy, subtle motion, and mobile-first responsiveness.
+
+## Preview
+
+![Mobile SaaS Marketing Template](./public/preview/poster.png)
+
+## Features
+
+- Modern Next.js App Router setup
+- Tailwind CSS v4 theme tokens
+- shadcn preset with Base UI primitives
+- Hugeicons-ready dependency setup
+- Motion-powered section reveals
+- Responsive marketing page sections
+- No-rounded visual language
+- Animated hero copy
+- On-scroll logo, CTA, and feature interactions
+- Looping waveform component for feature cards
+- Pricing, CTA, and footer sections included
+
+## Stack
+
+- `Next.js 16`
+- `React 19`
+- `Tailwind CSS 4`
+- `motion`
+- `@base-ui/react`
+- `shadcn`
+- `@hugeicons/react`
+- `@hugeicons/core-free-icons`
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```txt
+src/
+  app/
+    globals.css
+    layout.tsx
+    page.tsx
+  components/
+    marketing/
+      animated-group.tsx
+      cta.tsx
+      features.tsx
+      footer.tsx
+      hero.tsx
+      logos.tsx
+      looping-waveform.tsx
+      navbar.tsx
+      pricing.tsx
+      triple-phone.tsx
+    ui/
+      button.tsx
+  lib/
+    utils.ts
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Customization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Brand Color
 
-## Deploy on Vercel
+The primary color is defined in `src/app/globals.css`:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```css
+--primary: #f97c00;
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Update this token to change the main accent color across the template.
+
+### Radius
+
+This template is designed with a no-rounded style:
+
+```css
+--radius: 0rem;
+```
+
+Keep this value if you want to preserve the Solace UI visual direction.
+
+### Page Sections
+
+The landing page is assembled in `src/app/page.tsx`:
+
+```tsx
+<Navbar />
+<Hero />
+<Logos />
+<Features />
+<Pricing />
+<CTA />
+<Footer />
+```
+
+Each section is isolated under `src/components/marketing`, so you can remove, reorder, or customize sections without touching the rest of the page.
+
+## Notes
+
+- The template uses `motion` for tasteful entrance animations.
+- The phone mockup section is intentionally left independent from the hero text animation.
+- The waveform component is decorative and does not request microphone permissions.
+- The layout uses a centered max-width page container with left and right borders.
+
+## License
+
+Licensed under the [MIT License](./LICENSE).
+
+Copyright (c) 2026 Solace UI.
